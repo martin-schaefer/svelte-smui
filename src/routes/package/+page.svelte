@@ -6,7 +6,7 @@
 		version: string;
 		deploy: boolean;
 	};
-	let instances: Instance[] = [
+	let instances: Instance[] = $state([
 		{ name: 'agz-bff-mybff', version: '2.0.0', deploy: true },
 		{ name: 'agz-bff-myapp', version: '1.0.1',  deploy: true },
 		{ name: 'agz-svc-service', version: '1.3.0', deploy: false },
@@ -25,7 +25,7 @@
 		{ name: 'agz-svc-bpmnx', version: '2.3.0', deploy: false },
 		{ name: 'agz-svc-srv', version: '3.0.0',  deploy: true },
 		{ name: 'agz-svc-security', version: '1.3.0', deploy: true }
-	];
+	]);
 
 </script>
 
