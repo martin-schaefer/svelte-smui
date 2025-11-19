@@ -39,18 +39,3 @@
 			.then((json) => (items = json));
 	}
 </script>
-
-<style>
-    /* Reset some of the demo app styles that interfere. */
-    :global(body),
-    :global(html) {
-        height: auto;
-        width: auto;
-        position: static;
-    }
-    :global(#smui-app) {
-        display: block;
-        height: auto;
-        overflow: auto;
-    }
-</style>

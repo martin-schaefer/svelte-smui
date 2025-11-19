@@ -6,26 +6,24 @@
 
 	let tabs = [
 		{
-			icon: 'access_time',
-			label: 'Recents',
+			icon: 'hive',
+			label: 'Cluster',
+			href: '/'
 		},
 		{
-			icon: 'near_me',
-			label: 'Nearby',
+			icon: 'box',
+			label: 'Browse Package',
+			href: '/package'
 		},
 		{
-			icon: 'favorite',
-			label: 'Favorites',
-		},
-		{
-			icon: 'github',
-			label: 'Woof',
-		},
+			icon: 'link',
+			label: 'Browse URLs',
+			href: '/url'
+		}
 	];
 	let active = $state(tabs[0]);
 	let { children } = $props();
 </script>
-
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
@@ -38,7 +36,7 @@
 				<Section>
 					<TabBar {tabs} key={(tab) => tab.label} bind:active>
 						{#snippet tab(tab)}
-							<Tab {tab}>
+							<Tab {tab} href={tab.href}>
 								<Icon class="material-icons">{tab.icon}</Icon>
 								<Label>{tab.label}</Label>
 							</Tab>
@@ -48,5 +46,7 @@
 			</Row>
 		</TopAppBar>
 </header>
-{@render children()}
+<main>
+	{@render children()}
+</main>
 
