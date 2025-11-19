@@ -28,7 +28,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 <header>
-		<TopAppBar style="background-color: #212121;">
+		<TopAppBar variant="static" style="background-color: #212121;">
 			<Row>
 				<Section>
 					<Title>Bitzer</Title>
