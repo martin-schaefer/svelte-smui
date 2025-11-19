@@ -1,6 +1,56 @@
-<script>
+<script lang="ts">
+	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import { onMount } from 'svelte';
+
+	type Ingress = {
+		name: string;
+		serviceUrls: string[];
+	};
+	let ingresses: Ingress[] = $state([]);
+
+	onMount(async () => ingresses = [
+		{ name: 'agz-bff-mybff', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "] },
+		{ name: 'agz-bff-myapp', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-service', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-appx', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]   },
+		{ name: 'agz-ui-dashboard', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-ui-items', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "] },
+		{ name: 'agz-svc-bpmn', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-ui-dashboardx', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-ui-it', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-bpmn', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-server', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-bbusiness', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-demo', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-ui-dashboard', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-ui-welcome', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-bpmn', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-ui-itemlines', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-bpmnx', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-srv', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
+		{ name: 'agz-svc-security', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  }
+	]);
+
 </script>
 
-<div>
-	<h1>URL</h1>
-</div>
+<DataTable stickyHeader table$aria-label="URL list" style="width: 100%;">
+	<Head>
+		<Row>
+			<Cell>Instance</Cell>
+			<Cell>Service URLs</Cell>
+			<Cell>Neutral URLs</Cell>
+			<Cell>Ingress URLs</Cell>
+		</Row>
+	</Head>
+	<Body>
+	{#each ingresses as ingress (ingress.name)}
+		<Row>
+			<Cell>{ingress.name}</Cell>
+			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}<br>{/each}</Cell>
+			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}.dev.xs1.cloud.azure<br>{/each}</Cell>
+			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}.ns-we0.act.cloud.azure<br>{/each}</Cell>
+		</Row>
+	{/each}
+	</Body>
+</DataTable>
+

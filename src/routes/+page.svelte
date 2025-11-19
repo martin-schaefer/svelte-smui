@@ -1,6 +1,5 @@
-<script>
+<script lang="ts">
 </script>
 
-<div>
-	<h1>Cluster</h1>
-</div>
+<h3>Welcome to the Cluster Home</h3>
+

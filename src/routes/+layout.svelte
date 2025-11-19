@@ -11,14 +11,14 @@
 			href: '/'
 		},
 		{
-			icon: 'box',
+			icon: 'folder',
 			label: 'Browse Package',
-			href: '/package'
+			href: '/package/'
 		},
 		{
 			icon: 'link',
 			label: 'Browse URLs',
-			href: '/url'
+			href: '/url/'
 		}
 	];
 	let active = $state(tabs[0]);
@@ -31,7 +31,7 @@
 		<TopAppBar variant="static" style="background-color: #212121;">
 			<Row>
 				<Section>
-					<Title>Bitzer</Title>
+					<Title>Material UI</Title>
 				</Section>
 				<Section>
 					<TabBar {tabs} key={(tab) => tab.label} bind:active>

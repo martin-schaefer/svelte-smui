@@ -20,7 +20,10 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.38.0",
+		"@material/typography": "^14.0.0",
+		"@smui/common": "^8.0.3",
 		"@smui/data-table": "^8.0.3",
+		"@smui/layout-grid": "^8.0.3",
 		"@smui/tab": "^8.0.3",
 		"@smui/tab-bar": "^8.0.3",
 		"@smui/top-app-bar": "^8.0.3",
