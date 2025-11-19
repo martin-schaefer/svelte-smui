@@ -32,7 +32,7 @@
 
 </script>
 
-<DataTable table$aria-label="Package content list" style="width: 100%;">
+<DataTable stickyHeader table$aria-label="Package content list" style="width: 100%;">
 	<Head>
 		<Row>
 			<Cell>Instance</Cell>
