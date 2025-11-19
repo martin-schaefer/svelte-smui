@@ -3,6 +3,8 @@
 	import TopAppBar, { Row, Section, Title } from '@smui/top-app-bar';
 	import Tab, { Icon, Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let tabs = [
 		{
@@ -23,6 +25,7 @@
 	];
 	let active = $state(tabs[0]);
 	let { children } = $props();
+	onMount(() => { goto(active.href);})
 </script>
 <svelte:head>
 	<link rel="icon" href={favicon} />
