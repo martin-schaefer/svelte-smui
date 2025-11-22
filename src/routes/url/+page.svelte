@@ -1,13 +1,16 @@
 <script lang="ts">
 	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { onMount } from 'svelte';
+	import Textfield from '@smui/textfield';
+	import HelperText from '@smui/textfield/helper-text';
+	import IconButton from '@smui/icon-button';
 
 	type Ingress = {
 		name: string;
 		serviceUrls: string[];
 	};
 	let ingresses: Ingress[] = $state([]);
-
+	let filter = $state('');
 	onMount(async () => ingresses = [
 		{ name: 'agz-bff-mybff', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "] },
 		{ name: 'agz-bff-myapp', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
@@ -32,6 +35,13 @@
 	]);
 
 </script>
+
+<div class="columns margins">
+	<div class="column">
+		<Textfield bind:value={filter} label="Filter by name" />
+		<IconButton class="material-icons" onclick={() => filter = ''}>delete</IconButton>
+	</div>
+</div>
 
 <DataTable stickyHeader table$aria-label="URL list" style="width: 100%;">
 	<Head>
