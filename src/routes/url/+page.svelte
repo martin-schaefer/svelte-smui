@@ -1,8 +1,7 @@
 <script lang="ts">
-	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import { onMount } from 'svelte';
 	import Textfield from '@smui/textfield';
-	import HelperText from '@smui/textfield/helper-text';
 	import IconButton from '@smui/icon-button';
 
 	type Ingress = {
@@ -10,7 +9,7 @@
 		serviceUrls: string[];
 	};
 	let ingresses: Ingress[] = $state([]);
-	let filter = $state('');
+	let filter = $state('undefined');
 	onMount(async () => ingresses = [
 		{ name: 'agz-bff-mybff', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "] },
 		{ name: 'agz-bff-myapp', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
@@ -54,12 +53,14 @@
 	</Head>
 	<Body>
 	{#each ingresses as ingress (ingress.name)}
+		{#if filter.length === 0 || ingress.name.toLowerCase().includes(filter.toLowerCase())}
 		<Row>
 			<Cell>{ingress.name}</Cell>
 			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}<br>{/each}</Cell>
 			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}.dev.xs1.cloud.azure<br>{/each}</Cell>
 			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}.ns-we0.act.cloud.azure<br>{/each}</Cell>
 		</Row>
+		{/if}
 	{/each}
 	</Body>
 </DataTable>
