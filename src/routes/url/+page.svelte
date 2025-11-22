@@ -9,7 +9,7 @@
 		serviceUrls: string[];
 	};
 	let ingresses: Ingress[] = $state([]);
-	let filter = $state('undefined');
+	let filter = $state('');
 	onMount(async () => ingresses = [
 		{ name: 'agz-bff-mybff', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "] },
 		{ name: 'agz-bff-myapp', serviceUrls: ["http://agz-bff-mybff", "rpc://agz-bff-mybff:26500 "]  },
@@ -53,7 +53,7 @@
 	</Head>
 	<Body>
 	{#each ingresses as ingress (ingress.name)}
-		{#if filter.length === 0 || ingress.name.toLowerCase().includes(filter.toLowerCase())}
+		{#if filter.length < 2 || ingress.name.toLowerCase().includes(filter.toLowerCase())}
 		<Row>
 			<Cell>{ingress.name}</Cell>
 			<Cell>{#each ingress.serviceUrls as serviceURL (serviceURL)}{serviceURL}<br>{/each}</Cell>
