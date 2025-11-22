@@ -37,7 +37,7 @@
 
 <div class="columns margins">
 	<div class="column">
-		<Textfield bind:value={filter} label="Filter by name" />
+		<Textfield bind:value={filter} label="Filter {ingresses.length} instances by name" style="min-width: 24em" />
 		<IconButton class="material-icons" onclick={() => filter = ''}>delete</IconButton>
 	</div>
 </div>
