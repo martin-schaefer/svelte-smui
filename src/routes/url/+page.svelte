@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import Textfield from '@smui/textfield';
 	import IconButton from '@smui/icon-button';
+	import Icon from '@smui/textfield/icon';
 
 	type Ingress = {
 		name: string;
@@ -37,8 +38,11 @@
 
 <div class="columns margins">
 	<div class="column">
-		<Textfield bind:value={filter} label="Filter {ingresses.length} instances by name" style="min-width: 24em" />
-		<IconButton class="material-icons" title="Clear filter" onclick={() => filter = ''}>delete</IconButton>
+		<Textfield bind:value={filter} label="Filter {ingresses.length} instances by name" style="min-width: 24em">
+			{#snippet trailingIcon()}
+				<Icon class="material-icons" role="button" title="Clear filter" onclick={() => filter = ''}>delete</Icon>
+			{/snippet}
+		</Textfield>
 		<IconButton class="material-icons" title="Refresh instances" onclick={() => filter = ''}>refresh</IconButton>
 	</div>
 </div>
