@@ -31,7 +31,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 <header>
-		<TopAppBar variant="static" style="background-color: #212121;">
+		<TopAppBar variant="static" style="background-color: var(--mdc-theme-background)">
 			<Row>
 				<Section>
 					<Title>Material UI</Title>
